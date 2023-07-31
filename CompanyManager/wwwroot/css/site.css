@@ -104,3 +104,8 @@ body {
     max-width:400px;
     min-height:50px;
 }
+
+.borderBlack {
+    border: solid 25px white;
+    outline: solid 4px black;
+}

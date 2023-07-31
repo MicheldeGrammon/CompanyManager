@@ -36,6 +36,28 @@ namespace CompanyManager.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var obj = await _companyRepo.FindAsync(id);
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeletePostAsync(int id)
+        {
+            await _companyRepo.Remove(id);
+
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
+
         public IActionResult Details()
         {
             var company = new Company();

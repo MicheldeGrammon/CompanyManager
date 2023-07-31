@@ -46,7 +46,7 @@ namespace CompanyManager.Data.Repository
             return allEntity;
         }
 
-        public async Task<T> Find(int id)
+        public async Task<T> FindAsync(int id)
         {
             var entity = await dbSet.FindAsync(id);
             if (entity == null)
