@@ -10,9 +10,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.8" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CompanyManager_DataAccess\CompanyManager_DataAccess.csproj" />
-    <ProjectReference Include="..\CompanyManager_Models\CompanyManager_Models.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,8 +1,8 @@
-﻿using CompanyManager_Models;
-using CompanyManager_Models.ViewModels;
+﻿using CompanyManager.Models.ViewModels;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using System.Composition;
+using CompanyManager.Models;
 
 namespace CompanyManager.Controllers
 {
