@@ -1,37 +1,59 @@
-﻿@model List<CompanyManager.Models.Company>
+﻿@model IEnumerable<CompanyManager.Models.Company>
 
-<div style="border:4px solid #000000">
-    <div style="margin:25px">
-        <h5>Companies</h5>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Company Name
-                    </th>
-                    <th>
-                        City
-                    </th>
-                    <th>
-                        State
-                    </th>
-                    <th>
-                        Phone
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td width="20%">@item.City</td>
-                        <td width="20%">@item.State</td>
-                        <td width="20%">@item.Phone</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<div class="borderBlack">
+    <div class="row">
+        <div class="col">
+            <h5>Companies</h5>
+        </div>
+        <div class="colForm" style="text-align:end">
+            <a asp-controller="Companies" asp-action="Create" class="btn btn-outline-dark"><i class="fa-solid fa-plus fa-lg"></i></a> &nbsp;
+        </div>
     </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Company Name
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    State
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    U/D
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Companies" asp-route-Id="@item.Id" asp-action="Details" class="text">
+                            @item.Name
+                        </a>                      
+                     </td>
+                    <td width="20%">@item.City</td>
+                    <td width="20%">@item.State</td>
+                    <td width="20%">@item.Phone</td>
+                    <td width="10%">
+                        <a asp-controller="Companies" asp-route-Id="@item.Id" asp-action="Update" class="btn btn-outline-dark mx-1">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a asp-controller="Companies" asp-route-Id="@item.Id" asp-action="Delete" class="btn btn-outline-danger mx-1">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+

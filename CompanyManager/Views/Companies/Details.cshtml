@@ -1,147 +1,145 @@
 ﻿@model CompanyManager.Models.ViewModels.DetailsVM
 
-<div style="border:4px solid #000000">
-    <div style="margin:25px">
-        <div>
-            <div class="flex">
-                <h5 style="width:20%">Company details</h5>
-                <p>@Model.Company.Name</p>
+<div class="borderBlack">
+    <div>
+        <div class="flex">
+            <h5 style="width:20%">Company details</h5>
+            <p>@Model.Company.Name</p>
+        </div>
+        <div class="content">
+            <div class="group" style="width:30%">
+                <div class="gridGroup">
+                    <div class="box"><h5>Info</h5></div>
+                    <div style="text-align:end"><i class="fa-solid fa-check fa-lg"></i></div>
+
+                    <div class="box">ID:</div>
+                    <div class="form-control">@Model.Company.Id</div>
+
+                    <div class="box">Name:</div>
+                    <div class="form-control">@Model.Company.Name</div>
+
+                    <div class="box">Address:</div>
+                    <div class="form-control">@Model.Company.Address</div>
+
+                    <div class="box">City:</div>
+                    <div class="form-control">@Model.Company.City</div>
+
+                    <div class="box">State:</div>
+                    <div class="form-control">@Model.Company.State</div>
+                </div>
             </div>
-            <div class="content">
-                <div class="group" style="width:30%">
-                    <div class="gridGroup">
-                        <div class="box"><h5>Info</h5></div>
-                        <div style="text-align:end"><i class="fa-solid fa-check fa-lg"></i></div>
 
-                        <div class="box">ID:</div>
-                        <div class="form-control">@Model.Company.Id</div>
-
-                        <div class="box">Name:</div>
-                        <div class="form-control">@Model.Company.Name</div>
-
-                        <div class="box">Address:</div>
-                        <div class="form-control">@Model.Company.Address</div>
-
-                        <div class="box">City:</div>
-                        <div class="form-control">@Model.Company.City</div>
-
-                        <div class="box">State:</div>
-                        <div class="form-control">@Model.Company.State</div>
-                    </div>
+            <div class="group" style="width:30%">
+                <div class="gridGroup">
+                    <div class="box"><h5>History</h5></div>
+                    <div style="text-align:end"><i class="fa-solid fa-rotate fa-lg"></i></div>
                 </div>
-
-                <div class="group" style="width:30%">
-                    <div class="gridGroup">
-                        <div class="box"><h5>History</h5></div>
-                        <div style="text-align:end"><i class="fa-solid fa-rotate fa-lg"></i></div>
-                    </div>
-                    <div class="scrollItem">
-                        <table class="table">
-                            <thead>
+                <div class="scrollItem">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order Date</th>
+                                <th>Store City</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.History)
+                            {
                                 <tr>
-                                    <th>Order Date</th>
-                                    <th>Store City</th>
+                                    <td>@item.OrderDate</td>
+                                    <td>@item.StoreCity</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.History)
-                                {
-                                    <tr>
-                                        <td>@item.OrderDate</td>
-                                        <td>@item.StoreCity</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="group" style="width:30%">
+                <div class="gridGroup">
+                    <div class="box"><h5>Notes</h5></div>
+                    <div style="text-align:end">
+                        <i class="fa-solid fa-plus fa-lg"></i>&nbsp;
+                        <i class="fa-solid fa-trash fa-lg"></i>&nbsp;
+                        <i class="fa-solid fa-rotate fa-lg"></i>&nbsp;
                     </div>
                 </div>
-
-                <div class="group" style="width:30%">
-                    <div class="gridGroup">
-                        <div class="box"><h5>Notes</h5></div>
-                        <div style="text-align:end">
-                            <i class="fa-solid fa-plus fa-lg"></i>&nbsp;
-                            <i class="fa-solid fa-trash fa-lg"></i>&nbsp;
-                            <i class="fa-solid fa-rotate fa-lg"></i>&nbsp;
-                        </div>
-                    </div>
-                    <div class="scrollItem">
-                        <table class="table">
-                            <thead>
+                <div class="scrollItem">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Invoice Number</th>
+                                <th>Employee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Notes)
+                            {
                                 <tr>
-                                    <th>Invoice Number</th>
-                                    <th>Employee</th>
+                                    <td>@item.InvoiceNumber</td>
+                                    <td>@item.Employee</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Notes)
-                                {
-                                    <tr>
-                                        <td>@item.InvoiceNumber</td>
-                                        <td>@item.Employee</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
+            </div>
 
-                <div class="group" style="width:calc(60% + 20px)">
-                    <div class="row">
-                        <div class="col">
-                            <div class="gridGroup">
-                                <div class="box"><h5>Employees</h5></div>
-                                <div style="text-align:end">
-                                    <i class="fa-solid fa-plus fa-lg"></i>&nbsp;
-                                    <i class="fa-solid fa-pen fa-lg"></i>&nbsp;
-                                    <i class="fa-solid fa-rotate fa-lg"></i>&nbsp;
-                                </div>
+            <div class="group" style="width:calc(60% + 20px)">
+                <div class="row">
+                    <div class="col">
+                        <div class="gridGroup">
+                            <div class="box"><h5>Employees</h5></div>
+                            <div style="text-align:end">
+                                <i class="fa-solid fa-plus fa-lg"></i>&nbsp;
+                                <i class="fa-solid fa-pen fa-lg"></i>&nbsp;
+                                <i class="fa-solid fa-rotate fa-lg"></i>&nbsp;
                             </div>
+                        </div>
 
-                            <div class="scrollItem">
-                                <table class="table">
-                                    <thead>
+                        <div class="scrollItem">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice Number</th>
+                                        <th>Employee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Employees)
+                                    {
                                         <tr>
-                                            <th>Invoice Number</th>
-                                            <th>Employee</th>
+                                            <td>@item.FirstName</td>
+                                            <td>@item.LastName</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Employees)
-                                        {
-                                            <tr>
-                                                <td>@item.FirstName</td>
-                                                <td>@item.LastName</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="gridGroup">
+                            <div class="box"><h5>Employee</h5></div>
+                            <div style="text-align:end">
+                                <i class="fa-solid fa-pen fa-lg"></i>&nbsp;
+                                <i class="fa-solid fa-trash fa-lg"></i>&nbsp;
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="gridGroup">
-                                <div class="box"><h5>Employee</h5></div>
-                                <div style="text-align:end">
-                                    <i class="fa-solid fa-pen fa-lg"></i>&nbsp;
-                                    <i class="fa-solid fa-trash fa-lg"></i>&nbsp;
-                                </div>
-                            </div>
-                            <div class="gridGroup">
-                                <div class="box">First Name:</div>
-                                <div class="form-control">@Model.Employees[0].FirstName</div>
+                        <div class="gridGroup">
+                            <div class="box">First Name:</div>
+                            <div class="form-control">@Model.Employees[0].FirstName</div>
 
-                                <div class="box">Last Name:</div>
-                                <div class="form-control">@Model.Employees[0].LastName</div>
+                            <div class="box">Last Name:</div>
+                            <div class="form-control">@Model.Employees[0].LastName</div>
 
-                                <div class="box">Title:</div>
-                                <div class="form-control">@Model.Employees[0].Title</div>
+                            <div class="box">Title:</div>
+                            <div class="form-control">@Model.Employees[0].Title</div>
 
-                                <div class="box">Birth Date:</div>
-                                <div class="form-control">@Model.Employees[0].BirthDate</div>
+                            <div class="box">Birth Date:</div>
+                            <div class="form-control">@Model.Employees[0].BirthDate</div>
 
-                                <div class="box">Position:</div>
-                                <div class="form-control">@Model.Employees[0].Position</div>
-                            </div>
+                            <div class="box">Position:</div>
+                            <div class="form-control">@Model.Employees[0].Position</div>
                         </div>
                     </div>
                 </div>
@@ -149,4 +147,5 @@
         </div>
     </div>
 </div>
+
 

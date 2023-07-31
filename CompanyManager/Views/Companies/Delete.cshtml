@@ -1,0 +1,60 @@
+﻿@model CompanyManager.Models.Company
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="Id" hidden />
+    <div class="borderBlack">
+
+        <h5>Delete company</h5>
+        <h5>Info</h5>
+        <div class="row">
+            <div class="col-2">
+                <p>Name:</p>
+            </div>
+            <div class="colForm">
+                <input asp-for="Name" disabled class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <p>Address:</p>
+            </div>
+            <div class="colForm">
+                <input asp-for="Address" disabled class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <p>City:</p>
+            </div>
+            <div class="colForm">
+                <input asp-for="City" disabled class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <p>State:</p>
+            </div>
+            <div class="colForm">
+                <input asp-for="State" disabled class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <p>Phone:</p>
+            </div>
+            <div class="colForm">
+                <input asp-for="Phone" disabled class="form-control" />
+            </div>
+        </div>
+
+        <div class="flex">
+            <input type="submit" class="btn btn-danger" value="Delete" />
+            &nbsp;
+            <a asp-action="Index" class="btn btn-dark"><i class="fa-solid fa-right-from-bracket"></i> &nbsp;Back</a>
+        </div>
+    </div>
+</form>
