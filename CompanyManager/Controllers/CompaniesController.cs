@@ -36,7 +36,7 @@ namespace CompanyManager.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var obj = await _companyRepo.FindAsync(id);
             return View(obj);
@@ -44,28 +44,35 @@ namespace CompanyManager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeletePostAsync(int id)
+        public async Task<IActionResult> DeletePost(int id)
         {
-            await _companyRepo.Remove(id);
+            await _companyRepo.RemoveAsync(id);
 
             return RedirectToAction("Index");
         }
 
 
-
-
-
-
-
-
-        public IActionResult Details()
+        public async Task<IActionResult> Update(int id)
         {
-            var company = new Company();
+            var obj = await _companyRepo.FindAsync(id);
+            return View(obj);
+        }
 
-            var history = new History();
-            var history2 = new History();
-            var allHistory = new List<History>() { history, history2, history, history2, history, history2, history, history2, history, history2 };
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdatePost(Company obj)
+        {
+            await _companyRepo.UdateAsync(obj);
 
+            return RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var company = await _companyRepo.FindAsync(id);
+
+            var allHistory = new List<History>() { };
 
             var note = new Note() { InvoiceNumber = "35703", Employee = "Harv Mudd" };
             var notes = new List<Note>() { note, note, note };

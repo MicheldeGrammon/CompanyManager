@@ -23,7 +23,7 @@ namespace CompanyManager.Data.Repository
             _context.SaveChanges();
         }
 
-        public async Task Remove(int id)
+        public async Task RemoveAsync(int id)
         {
             var entity = await dbSet.FindAsync(id);
             if (entity == null)

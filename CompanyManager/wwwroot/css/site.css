@@ -109,3 +109,8 @@ body {
     border: solid 25px white;
     outline: solid 4px black;
 }
+
+a.text {
+    text-decoration: none;
+    color: #666;
+}

@@ -12,7 +12,7 @@ namespace CompanyManager.Data.Repository
             _context = context;
         }
 
-        public async Task Udate(Company obj)
+        public async Task UdateAsync(Company obj)
         {
             var objFromDb = await _context.Company.FindAsync(obj.Id);
             if (objFromDb == null)

@@ -1,17 +1,18 @@
 ﻿@model CompanyManager.Models.Company
 
-<form method="post" asp-action="DeletePost">
-    <input asp-for="Id" hidden />
+<form method="post" asp-action="UpdatePost">
     <div class="borderBlack">
-
-        <h5>Delete company</h5>
+        <div asp-validation-summary="ModelOnly"></div>
+        <input asp-for="Id" hidden />
+        <h5>Create new Company</h5>
         <h5>Info</h5>
         <div class="row">
             <div class="col-2">
                 <p>Name:</p>
             </div>
             <div class="colForm">
-                <input asp-for="Name" disabled class="form-control" />
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name"></span>
             </div>
         </div>
 
@@ -20,7 +21,8 @@
                 <p>Address:</p>
             </div>
             <div class="colForm">
-                <input asp-for="Address" disabled class="form-control" />
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address"></span>
             </div>
         </div>
 
@@ -29,7 +31,8 @@
                 <p>City:</p>
             </div>
             <div class="colForm">
-                <input asp-for="City" disabled class="form-control" />
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City"></span>
             </div>
         </div>
 
@@ -38,7 +41,8 @@
                 <p>State:</p>
             </div>
             <div class="colForm">
-                <input asp-for="State" disabled class="form-control" />
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State"></span>
             </div>
         </div>
 
@@ -47,14 +51,22 @@
                 <p>Phone:</p>
             </div>
             <div class="colForm">
-                <input asp-for="Phone" disabled class="form-control" />
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone"></span>
             </div>
         </div>
 
         <div class="flex">
-            <input type="submit" class="btn btn-danger" value="Delete" />
+            <input type="submit" class="btn btn-primary" value="Update" />
             &nbsp;
             <a asp-action="Index" class="btn btn-dark"><i class="fa-solid fa-right-from-bracket"></i> &nbsp;Back</a>
         </div>
     </div>
 </form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

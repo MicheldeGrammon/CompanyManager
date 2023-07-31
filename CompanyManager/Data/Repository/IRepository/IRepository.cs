@@ -5,6 +5,6 @@
         Task Add(T entity);
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> FindAsync(int id);
-        Task Remove(int id);
+        Task RemoveAsync(int id);
     }
 }
