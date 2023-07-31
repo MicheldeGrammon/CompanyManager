@@ -51,6 +51,7 @@ body {
 .flex {
     display: flex;
     justify-content: left;
+    width: 100%;
 }
 
 .content {
@@ -92,9 +93,14 @@ body {
     }
 
     .scrollItem::-webkit-scrollbar-track {
-        background:#ccc;
+        background: #ccc;
     }
 
     .scrollItem::-webkit-scrollbar-thumb {
         background: #777;
     }
+
+.colForm {
+    max-width:400px;
+    min-height:50px;
+}

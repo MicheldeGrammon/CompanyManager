@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +10,16 @@ namespace CompanyManager.Models
 {
     public class History
     {
-        public int Id { get; set; } = 1;
-        public string OrderDate {get;set;}
-        public string StoreCity { get;set;}
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public DateTime OrderDate {get;set; }
+
+        [Required]
+        public string StoreCity { get; set; }
+
+        [ForeignKey("CompanyId")]
+        public virtual Company? Company { get; set; }
     }
 }

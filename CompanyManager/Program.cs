@@ -1,3 +1,8 @@
+using CompanyManager.Data;
+using CompanyManager.Data.Repository;
+using CompanyManager.Data.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
+
 namespace CompanyManager
 {
     public class Program
@@ -7,7 +12,13 @@ namespace CompanyManager
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<DataContext>(option =>
+            option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+
+
 
             var app = builder.Build();
 
