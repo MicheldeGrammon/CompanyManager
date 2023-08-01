@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace CompanyManager.Models
 {
@@ -21,5 +22,11 @@ namespace CompanyManager.Models
 
         [Required]
         public string Phone { get; set; }
+
+        public List<Employee> Employee { get; set; }
+
+        public List<History> History { get; set; }
+
+        public List<Note> Note { get; set; }
     }
 }

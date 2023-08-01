@@ -4,6 +4,7 @@ using CompanyManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompanyManager.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230801044743_RebuildTable")]
+    partial class RebuildTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +69,7 @@ namespace CompanyManager.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -100,7 +103,7 @@ namespace CompanyManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("OrderDate")
@@ -145,24 +148,20 @@ namespace CompanyManager.Migrations
 
             modelBuilder.Entity("CompanyManager.Models.Employee", b =>
                 {
-                    b.HasOne("CompanyManager.Models.Company", "Character")
+                    b.HasOne("CompanyManager.Models.Company", "Company")
                         .WithMany("Employee")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
-                    b.Navigation("Character");
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("CompanyManager.Models.History", b =>
                 {
-                    b.HasOne("CompanyManager.Models.Company", "Character")
+                    b.HasOne("CompanyManager.Models.Company", "Company")
                         .WithMany("History")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
-                    b.Navigation("Character");
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("CompanyManager.Models.Note", b =>

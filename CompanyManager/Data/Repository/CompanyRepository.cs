@@ -1,5 +1,6 @@
 ﻿using CompanyManager.Data.Repository.IRepository;
 using CompanyManager.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CompanyManager.Data.Repository
 {
@@ -12,7 +13,7 @@ namespace CompanyManager.Data.Repository
             _context = context;
         }
 
-        public async Task UdateAsync(Company obj)
+        public async Task UpdateAsync(Company obj)
         {
             var objFromDb = await _context.Company.FindAsync(obj.Id);
             if (objFromDb == null)
@@ -27,6 +28,6 @@ namespace CompanyManager.Data.Repository
             objFromDb.State = obj.State;
 
             await _context.SaveChangesAsync();
-        }
+        }      
     }
 }

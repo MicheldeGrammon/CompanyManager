@@ -17,6 +17,7 @@ namespace CompanyManager
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 
 

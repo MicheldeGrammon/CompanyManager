@@ -28,7 +28,7 @@ namespace CompanyManager.Models
         [Required]
         public string Position { get; set; }
 
-        [ForeignKey("CompanyId")]
-        public virtual Company? Company { get; set; }
+        public int CompanyId { get; set; }
+        public Company? Company { get; set; }
     }
 }

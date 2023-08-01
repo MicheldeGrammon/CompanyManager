@@ -12,5 +12,6 @@ namespace CompanyManager.Models.ViewModels
         public IEnumerable<History> History { get; set; }
         public IEnumerable<Note> Notes { get; set; }
         public List<Employee> Employees { get; set; }
+        public Employee Employee { get; set; }
     }
 }

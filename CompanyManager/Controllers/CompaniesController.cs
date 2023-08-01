@@ -9,10 +9,12 @@ namespace CompanyManager.Controllers
 {
     public class CompaniesController : Controller
     {
+        private readonly IEmployeeRepository _employeeRepo;
         private readonly ICompanyRepository _companyRepo;
 
-        public CompaniesController(ICompanyRepository companyRepo)
+        public CompaniesController(IEmployeeRepository employeeRepo, ICompanyRepository companyRepo)
         {
+            _employeeRepo = employeeRepo;
             _companyRepo = companyRepo;
         }
 
@@ -29,7 +31,6 @@ namespace CompanyManager.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(Company obj)
         {
             _companyRepo.Add(obj);
@@ -43,7 +44,6 @@ namespace CompanyManager.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeletePost(int id)
         {
             await _companyRepo.RemoveAsync(id);
@@ -59,16 +59,15 @@ namespace CompanyManager.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdatePost(Company obj)
         {
-            await _companyRepo.UdateAsync(obj);
+            await _companyRepo.UpdateAsync(obj);
 
             return RedirectToAction("Index");
         }
 
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id, int employeeId)
         {
             var company = await _companyRepo.FindAsync(id);
 
@@ -77,10 +76,20 @@ namespace CompanyManager.Controllers
             var note = new Note() { InvoiceNumber = "35703", Employee = "Harv Mudd" };
             var notes = new List<Note>() { note, note, note };
 
-            var employee = new Employee() { FirstName = "John", LastName = "Heart" };
-            var employees = new List<Employee>() { employee, employee, employee, employee, employee, employee, employee, employee, employee };
 
-            var detailsVM = new DetailsVM() { Employees = employees, Company = company, History = allHistory, Notes = notes };
+            var employees = await _employeeRepo.GetAllAsync(id);
+
+
+            var employee = employees.FirstOrDefault(x=>x.Id==employeeId);
+
+            var detailsVM = new DetailsVM() 
+            { 
+                Employees = employees,
+                Company = company,
+                History = allHistory,
+                Notes = notes,
+                Employee = employee
+            };
 
             return View(detailsVM);
         }
