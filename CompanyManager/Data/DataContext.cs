@@ -5,10 +5,7 @@ namespace CompanyManager.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
-        { 
-        
-        }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Company> Company { get; set; }
         public DbSet<Employee> Employee { get; set; }

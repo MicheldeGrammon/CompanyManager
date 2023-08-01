@@ -11,13 +11,19 @@ namespace CompanyManager.Controllers
     {
         private readonly IEmployeeRepository _employeeRepo;
         private readonly ICompanyRepository _companyRepo;
+        private readonly INoteRepository _noteRepo;
+        private readonly IHistoryRepository _historyRepo;
 
-        public CompaniesController(IEmployeeRepository employeeRepo, ICompanyRepository companyRepo)
+        public CompaniesController(IEmployeeRepository employeeRepo,
+                                   ICompanyRepository companyRepo,
+                                   INoteRepository noteRepo,
+                                   IHistoryRepository historyRepository)
         {
             _employeeRepo = employeeRepo;
             _companyRepo = companyRepo;
+            _noteRepo = noteRepo;
+            _historyRepo = historyRepository;
         }
-
 
         public async Task<IActionResult> Index()
         {
@@ -61,35 +67,20 @@ namespace CompanyManager.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdatePost(Company obj)
         {
-            await _companyRepo.UpdateAsync(obj);
-
+                await _companyRepo.UpdateAsync(obj);
+                       
             return RedirectToAction("Index");
         }
-
 
         public async Task<IActionResult> Details(int id, int employeeId)
         {
             var company = await _companyRepo.FindAsync(id);
-
-            var allHistory = new List<History>() { };
-
-            var note = new Note() { InvoiceNumber = "35703", Employee = "Harv Mudd" };
-            var notes = new List<Note>() { note, note, note };
-
-
+            var allHistory = await _historyRepo.GetAllAsync(id);
+            var notes = await _noteRepo.GetAllAsync(id);
             var employees = await _employeeRepo.GetAllAsync(id);
+            var employee = employees.FirstOrDefault(x => x.Id == employeeId);
 
-
-            var employee = employees.FirstOrDefault(x=>x.Id==employeeId);
-
-            var detailsVM = new DetailsVM() 
-            { 
-                Employees = employees,
-                Company = company,
-                History = allHistory,
-                Notes = notes,
-                Employee = employee
-            };
+            var detailsVM = new DetailsVM(company, allHistory, notes, employees, employee);
 
             return View(detailsVM);
         }

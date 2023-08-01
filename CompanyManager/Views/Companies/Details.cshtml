@@ -36,23 +36,30 @@
                     <div style="text-align:end"><i class="fa-solid fa-rotate fa-lg"></i></div>
                 </div>
                 <div class="scrollItem">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Order Date</th>
-                                <th>Store City</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.History)
-                            {
+                    @if (Model.History.Count() > 0)
+                    {
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td>@item.OrderDate</td>
-                                    <td>@item.StoreCity</td>
+                                    <th>Order Date</th>
+                                    <th>Store City</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.History)
+                                {
+                                    <tr>
+                                        <td>@item.OrderDate</td>
+                                        <td>@item.StoreCity</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h6>List of stories is empty</h6>
+                    }
                 </div>
             </div>
 
@@ -60,29 +67,41 @@
                 <div class="gridGroup">
                     <div class="box"><h5>Notes</h5></div>
                     <div style="text-align:end">
-                        <i class="fa-solid fa-plus fa-lg"></i>&nbsp;
-                        <i class="fa-solid fa-trash fa-lg"></i>&nbsp;
-                        <i class="fa-solid fa-rotate fa-lg"></i>&nbsp;
+                        <a asp-controller="Note" asp-action="Create" asp-route-Id="@Model.Company.Id" class="text"><i class="fa-solid fa-plus fa-lg"></i></a> &nbsp;
                     </div>
                 </div>
                 <div class="scrollItem">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Invoice Number</th>
-                                <th>Employee</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Notes)
-                            {
+                    @if (Model.Notes.Count() > 0)
+                    {
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td>@item.InvoiceNumber</td>
-                                    <td>@item.Employee</td>
+                                    <th>Invoice Number</th>
+                                    <th>Employee</th>
+                                    <th></th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.Notes)
+                                {
+                                    <tr>
+                                        <td>@item.InvoiceNumber</td>
+                                        <td>@item.Employee</td>
+                                        <td style="text-align:center">
+                                            <a asp-controller="Note" asp-route-Id="@item.Id" asp-action="Delete" class="text">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h6>Add new note</h6>
+                    }
                 </div>
             </div>
 
@@ -92,20 +111,21 @@
                         <div class="gridGroup">
                             <div class="box"><h5>Employees</h5></div>
                             <div style="text-align:end">
-                                <a asp-controller="Employee" asp-action="Create" asp-route-Id ="@Model.Company.Id" class="text"><i class="fa-solid fa-plus fa-lg"></i></a> &nbsp;
+                                <a asp-controller="Employee" asp-action="Create" asp-route-Id="@Model.Company.Id" class="text"><i class="fa-solid fa-plus fa-lg"></i></a> &nbsp;
                             </div>
                         </div>
 
                         <div class="scrollItem">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Invoice Number</th>
-                                        <th>Employee</th>
-                                    </tr>
-                                </thead>
-                                @if (Model.Employees.Count > 0)
-                                {
+                            @if (Model.Employees.Count > 0)
+                            {
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice Number</th>
+                                            <th>Employee</th>
+                                        </tr>
+                                    </thead>
+
                                     <tbody>
                                         @foreach (var item in Model.Employees)
                                         {
@@ -123,12 +143,12 @@
                                             </tr>
                                         }
                                     </tbody>
-                                }
-                                else
-                                {
-                                    <h6>Add new employee</h6>
-                                }
-                            </table>
+                                </table>
+                            }
+                            else
+                            {
+                                <h6>Add new employee</h6>
+                            }
                         </div>
                     </div>
                     <div class="col">

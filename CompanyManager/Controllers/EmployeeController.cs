@@ -17,7 +17,7 @@ namespace CompanyManager.Controllers
             _companyRepo = companyRepo;
         }
 
-        public async Task<IActionResult> CreateAsync(int id)
+        public IActionResult Create(int id)
         {
             return View();
         }

@@ -37,7 +37,7 @@ namespace CompanyManager.Data.Repository
 
             if (allEntity == null)
             {
-                throw new ArgumentNullException(nameof(allEntity));
+                throw new ArgumentNullException($"Entity {allEntity.GetType} not found");
             }
 
             return allEntity;
