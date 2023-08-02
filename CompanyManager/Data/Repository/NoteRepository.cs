@@ -6,19 +6,19 @@ namespace CompanyManager.Data.Repository
 {
     public class NoteRepository : Repository<Note>, INoteRepository
     {
-        public NoteRepository(DataContext context) : base(context)  { }
+        public NoteRepository(DataContext context) : base(context) { }
 
         public async Task<List<Note>> GetAllAsync(int id)
         {
-                var allEntity = await dbSet.Where(x => x.CompanyId == id)
-                                           .ToListAsync();
+            var allEntity = await dbSet.Where(x => x.CompanyId == id)
+                                       .ToListAsync();
 
-                if (allEntity == null)
-                {
-                    throw new ArgumentNullException($"Entity {allEntity.GetType} not found");
-                }
+            if (allEntity == null)
+            {
+                throw new ArgumentNullException("Entities not found");
+            }
 
-                return allEntity;
+            return allEntity;
         }
     }
 }

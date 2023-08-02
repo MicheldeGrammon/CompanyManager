@@ -19,7 +19,7 @@ namespace CompanyManager.Data.Repository
                                                   .ToListAsync();
             if (allEntity == null)
             {
-                throw new ArgumentNullException($"Entity {allEntity.GetType} not found");
+                throw new ArgumentNullException("Entities not found");
             }
 
             return allEntity;

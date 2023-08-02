@@ -19,7 +19,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    overflow-wrap:break-word;
+    overflow-wrap: break-word;
 }
 
 .table {
@@ -101,8 +101,8 @@ body {
     }
 
 .colForm {
-    max-width:400px;
-    min-height:50px;
+    max-width: 400px;
+    min-height: 50px;
 }
 
 .borderBlack {

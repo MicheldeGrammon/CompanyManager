@@ -28,7 +28,7 @@ namespace CompanyManager.Data.Repository
             var entity = await dbSet.FindAsync(id);
             if (entity == null)
             {
-                throw new ArgumentNullException($"Entity {entity.GetType} not found");
+                throw new ArgumentNullException("Entity not found");
             }
 
             dbSet.Remove(entity);
@@ -40,7 +40,7 @@ namespace CompanyManager.Data.Repository
             var allEntity = await dbSet.ToListAsync();
             if (allEntity == null)
             {
-                throw new ArgumentNullException($"Entity {allEntity.GetType} not found");
+                throw new InvalidOperationException("Entities not found");
             }
 
             return allEntity;
@@ -51,7 +51,7 @@ namespace CompanyManager.Data.Repository
             var entity = await dbSet.FindAsync(id);
             if (entity == null)
             {
-                throw new ArgumentNullException($"Entity {entity.GetType} not found");
+                throw new ArgumentNullException("Entity not found");
             }
 
             return entity;

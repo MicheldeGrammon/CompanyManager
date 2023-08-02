@@ -18,7 +18,7 @@ namespace CompanyManager.Data.Repository
             var objFromDb = await _context.Company.FindAsync(obj.Id);
             if (objFromDb == null)
             {
-                throw new ArgumentNullException($"Entity {objFromDb.GetType} not found");
+                throw new ArgumentNullException("Entity not found");
             }
 
             objFromDb.Address = obj.Address;
@@ -28,6 +28,6 @@ namespace CompanyManager.Data.Repository
             objFromDb.State = obj.State;
 
             await _context.SaveChangesAsync();
-        }      
+        }
     }
 }

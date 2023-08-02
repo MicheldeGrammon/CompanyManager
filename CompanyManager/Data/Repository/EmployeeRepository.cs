@@ -32,12 +32,12 @@ namespace CompanyManager.Data.Repository
 
         public async Task<List<Employee>> GetAllAsync(int id)
         {
-            var allEntity = await dbSet.Where(x => x.CompanyId==id)
+            var allEntity = await dbSet.Where(x => x.CompanyId == id)
                                        .ToListAsync();
 
             if (allEntity == null)
             {
-                throw new ArgumentNullException($"Entity {allEntity.GetType} not found");
+                throw new ArgumentNullException("Entities not found");
             }
 
             return allEntity;

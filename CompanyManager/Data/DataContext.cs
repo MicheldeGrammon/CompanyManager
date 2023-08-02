@@ -11,6 +11,5 @@ namespace CompanyManager.Data
         public DbSet<Employee> Employee { get; set; }
         public DbSet<History> History { get; set; }
         public DbSet<Note> Note { get; set; }
-
     }
 }

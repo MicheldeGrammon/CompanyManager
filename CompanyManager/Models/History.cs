@@ -14,7 +14,7 @@ namespace CompanyManager.Models
         public int Id { get; set; }
 
         [Required]
-        public DateTime OrderDate {get;set; }
+        public DateTime OrderDate { get; set; }
 
         [Required]
         public string StoreCity { get; set; }
