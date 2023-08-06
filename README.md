@@ -17,4 +17,4 @@ CompanyManager позволяет управлять персоналом и к�
 * ASP.NET MVC
 * HTML/CSS
 * Entity Framework
-* Microsoft SQL Server (можно использовать любую базу данных совместимую с EF: QLite, MySQL, PostgreSQL)
+* Microsoft SQL Server (можно использовать любую базу данных совместимую с EF: SQLite, MySQL, PostgreSQL)
