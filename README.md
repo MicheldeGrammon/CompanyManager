@@ -6,7 +6,7 @@
 ## Описание
 
 CompanyManager позволяет управлять персоналом и компаниями.
-![Screenshot](https://github.com/MicheldeGrammon/CompanyManager/blob/master/CompanyManagerScreenshot.PNG
+![Screenshot](https://github.com/MicheldeGrammon/CompanyManager/blob/master/CompanyManagerScreenshot.PNG)
 
 ## функциональность
 1. Релазиованы CRUD-операций для компаний;
